@@ -1,0 +1,147 @@
+.sidebar {
+  width: 280px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-normal);
+}
+
+.sidebar-header {
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.logo-container h2 {
+  font-size: 1.25rem;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0;
+}
+
+.mobile-close {
+  display: none;
+  padding: 0.5rem;
+}
+
+.sidebar-nav {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.875rem 1rem;
+  border-radius: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--accent-primary);
+  transform: translateX(4px);
+}
+
+.nav-link.active {
+  color: var(--accent-primary);
+  box-shadow: 0 4px 15px rgba(99, 102, 241, 0.1);
+}
+
+.sidebar-footer {
+  padding: 1.5rem;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  transition: transform var(--transition-fast);
+  cursor: pointer;
+}
+
+.user-card:hover {
+  transform: translateY(-2px);
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+  z-index: 99;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--transition-normal);
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .mobile-close {
+    display: flex;
+  }
+  .sidebar-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
